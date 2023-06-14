@@ -21,7 +21,7 @@ CREATE TABLE paises(
     continente varchar(200),
     poblacion varchar(200),
     bandera varchar(255)
-)
+);
 
 CREATE TABLE pais_moneda(
     idpais int,
