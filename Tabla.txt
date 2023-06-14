@@ -1,0 +1,38 @@
+CREATE TABLE moneda(
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(200)
+);
+
+CREATE TABLE idioma(
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(200)
+);
+
+CREATE TABLE capital(
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(200),
+    idpais int,
+    CONSTRAINT fk_pais FOREIGN KEY(idpais) REFERENCES paises(id)
+);
+
+CREATE TABLE paises(
+    id SERIAL PRIMARY KEY,
+    nombre varchar(200),
+    continente varchar(200),
+    poblacion varchar(200),
+    bandera varchar(255)
+)
+
+CREATE TABLE pais_moneda(
+    idpais int,
+    idmoneda int,
+    CONSTRAINT fk_pais FOREIGN KEY(idpais) REFERENCES paises(id),
+    CONSTRAINT fk_moneda FOREIGN KEY(idmoneda) REFERENCES moneda(id),
+);
+
+CREATE TABLE pais_idioma(
+    idpais int,
+    idIdioma int,
+    CONSTRAINT fk_pais FOREIGN KEY(idpais) REFERENCES paises(id),
+    CONSTRAINT fk_idioma FOREIGN KEY(idIdioma) REFERENCES idioma(id)
+);
